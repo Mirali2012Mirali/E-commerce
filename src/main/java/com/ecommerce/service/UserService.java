@@ -20,15 +20,20 @@ public class UserService {
     }
 
     public User login(LoginRequest request) {
-        User user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new RuntimeException("User not found."));
 
-        if (request.getEmail() == null || request.getEmail().isBlank()) {
-            throw new RuntimeException("Email is required.");
+        if (request.getUsername() == null || request.getUsername().isBlank()) {
+            throw new RuntimeException("Username is required.");
         }
 
         if (request.getPassword() == null || request.getPassword().isBlank()) {
             throw new RuntimeException("Password is required.");
+        }
+
+        User user = userRepository.findByUsername(request.getUsername())
+                .orElseThrow(() -> new RuntimeException("User not found."));
+
+        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+            throw new RuntimeException("Wrong password.");
         }
 
         return user;
@@ -44,14 +49,26 @@ public class UserService {
             throw new RuntimeException("Email is required.");
         }
 
+        if (!form.getEmail().contains("@")) {
+            throw new RuntimeException("Invalid email.");
+        }
+
         if (form.getPassword() == null || form.getPassword().isBlank()) {
             throw new RuntimeException("Password is required.");
         }
 
+        if (userRepository.findByEmail(form.getEmail()).isPresent()) {
+            throw new RuntimeException("Email already exists.");
+        }
+
+
         User user = new User();
+
+        user.setName(form.getName());
+        user.setSurname(form.getSurname());
         user.setUsername(form.getUsername());
         user.setEmail(form.getEmail());
-        user.setPassword(passwordEncoder.encode(form.getPassword()));
+        user.setPassword(passwordEncoder.encode(form.getPassword()));;
 
         return userRepository.save(user);
     }

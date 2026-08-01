@@ -1,95 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Checkout</title>
+    <meta http-equiv="refresh" content="0; url=./checkout/checkout.html">
+    <script>window.location.replace("./checkout/checkout.html");</script>
+    <title>Redirecting to Checkout</title>
 </head>
 <body>
-
-<h1>Checkout</h1>
-
-<input id="username" placeholder="Username">
-<br><br>
-
-<input id="address" placeholder="Delivery Address">
-<br><br>
-
-<input id="totalPrice" type="number" placeholder="Total Price">
-<br><br>
-
-<button onclick="placeOrder()">
-    Place Order
-</button>
-
-<p id="message"></p>
-
-<script>
-
-    function placeOrder() {
-
-    const username = document.getElementById("username").value.trim();
-const address = document.getElementById("address").value.trim();
-const totalPrice = document.getElementById("totalPrice").value.trim();
-
-if (
-    username === "" ||
-    address === "" ||
-    totalPrice === ""
-) {
-    document.getElementById("message").innerHTML =
-        "Please fill in all fields.";
-    return;
-}
-
-        fetch("/api/orders", {
-
-            method: "POST",
-
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify({
-
-                username: document.getElementById("username").value,
-
-                address: document.getElementById("address").value,
-
-                totalPrice: parseFloat(
-                    document.getElementById("totalPrice").value
-                )
-
-            })
-
-        })
-
-        .then(response => {
-
-            if (!response.ok) {
-                throw new Error("Failed to place order");
-            }
-
-            return response.json();
-
-        })
-
-        .then(() => {
-
-            document.getElementById("message").innerHTML =
-                "✅ Order placed successfully!";
-
-        })
-
-        .catch(error => {
-
-            document.getElementById("message").innerHTML =
-                error.message;
-
-        });
-
-    }
-
-</script>
-
+<p>Redirecting to <a href="./checkout/checkout.html">Checkout</a>...</p>
 </body>
 </html>

@@ -1,0 +1,23 @@
+footer img.app[alt="QR Code"] {
+    width: 70px !important;
+    height: 70px !important;
+    max-width: 70px;
+    object-fit: contain;
+    display: block;
+}
+
+footer img.app[alt="Google Play"],
+footer img.app[alt="App Store"] {
+    width: auto !important;
+    height: 28px !important;
+    max-width: 100px;
+    object-fit: contain;
+    margin-right: 6px;
+    margin-bottom: 4px;
+}
+
+.user-link,
+.cart-link {
+    text-decoration: none;
+    color: inherit;
+}

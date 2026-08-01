@@ -1,5 +1,6 @@
 package com.ecommerce.controller;
 
+import com.ecommerce.dto.CartResponse;
 import com.ecommerce.entity.Cart;
 import com.ecommerce.service.CartService;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +29,7 @@ public class CartController {
     }
 
     @GetMapping("/user/{username}")
-    public List<Cart> getUserCart(@PathVariable String username) {
+    public List<CartResponse> getUserCart(@PathVariable String username) {
         return cartService.getUserCart(username);
     }
 

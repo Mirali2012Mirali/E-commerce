@@ -8,6 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/orders")
+@CrossOrigin(origins = "*")
 public class OrderController {
 
     private final OrderService orderService;
@@ -24,6 +25,11 @@ public class OrderController {
     @GetMapping
     public List<Order> getAllOrders() {
         return orderService.getAllOrders();
+    }
+
+    @GetMapping("/user/{username}")
+    public List<Order> getUserOrders(@PathVariable String username) {
+        return orderService.getOrdersByUsername(username);
     }
 
     @DeleteMapping("/{id}")

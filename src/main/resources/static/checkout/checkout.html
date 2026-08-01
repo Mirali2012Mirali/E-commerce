@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="./checkout.js" defer></script>
+    <style>
+        .user-link, .cart-link {
+            text-decoration: none;
+            color: inherit;
+        }
+        html, body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .container.checkout-section {
+            flex: 1;
+        }
+        footer {
+            margin-top: auto;
+        }
+    </style>
+    <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+<div class="bg-danger text-white text-center py-2">
+    Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
+    <a href="../shop/shop.html" class="text-white fw-bold">ShopNow</a>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="../home/home.html">E-commerce</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="../home/home.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="../contact/contact.html">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="../about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="../createaccount/createaccount.html">Sign Up</a></li>
+                <li class="nav-item">
+                    <a class="btn btn-danger text-white" href="../shop/shop.html">Shop</a>
+                </li>
+            </ul>
+            <form class="d-flex ms-3">
+                <input class="form-control" type="search" placeholder="What are you looking for?" />
+            </form>
+            <div class="ms-3" id="userInfo">
+                <a href="../cart/cart.html" class="cart-link"><i class="bi bi-cart3"></i></a>
+                <a class="user-link" href="../user.html"><i class="bi bi-person"></i></a>
+                <span id="usernameDisplay"></span>
+                <a href="#" class="btn btn-danger" id="logoutBtn" style="display: none">Log out</a>
+                <a href="../login/login.html" class="btn btn-danger" id="loginBtn">Log in</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<section class="container my-5 checkout-section">
+    <form class="row needs-validation form" novalidate>
+        <div class="row">
+            <div class="col-6 row g-2">
+                <div class="col-md-10">
+                    <label class="form-label">First name</label>
+                    <input name="name" type="text" class="form-control" id="name" required>
+                    <div class="valid-feedback">Looks good!</div>
+                </div>
+                <div class="col-md-10">
+                    <label class="form-label">Last name</label>
+                    <input name="surname" type="text" class="form-control" id="surname" required>
+                    <div class="valid-feedback">Looks good!</div>
+                </div>
+                <div class="col-md-10">
+                    <label class="form-label">State</label>
+                    <select name="state" class="form-select" id="state" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option>Azerbaijan</option>
+                        <option>Turkey</option>
+                        <option>Saudi arabia</option>
+                        <option>Pakistan</option>
+                    </select>
+                    <div class="invalid-feedback">Please select a valid state.</div>
+                </div>
+                <div class="col-md-10">
+                    <label class="form-label">City</label>
+                    <input name="city" type="text" class="form-control" id="city" required>
+                    <div class="invalid-feedback">Please provide a valid city.</div>
+                </div>
+                <div class="col-md-10">
+                    <label class="form-label">Address</label>
+                    <input name="address" type="text" class="form-control" id="address" required>
+                    <div class="invalid-feedback">Please provide a valid Address.</div>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Zip</label>
+                    <input name="zip" type="text" class="form-control" id="zip" required>
+                    <div class="invalid-feedback">Please provide a valid zip.</div>
+                </div>
+                <div class="col-md-10">
+                    <label class="form-label">Tel</label>
+                    <input name="tel" type="tel" class="form-control" id="tel" required>
+                    <div class="invalid-feedback">Please provide a valid Telephone number.</div>
+                </div>
+                <div class="col-md-10">
+                    <label class="form-label">Email</label>
+                    <input name="email" type="email" class="form-control" id="email" required>
+                    <div class="invalid-feedback">Please provide a valid Email.</div>
+                </div>
+                <div class="col-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                        <label class="form-check-label" for="invalidCheck">
+                            Agree to terms and conditions
+                        </label>
+                        <div class="invalid-feedback">You must agree before submitting.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 mt-3">
+                <div>
+                    <img class="mx-2" width="70px"
+                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIjhb3u5RBDP10cw-cwtGFOVR_HENoUDLwGg&s" alt="">
+                    <img class="mx-2" width="70px"
+                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCh6Wx6nJ-dsryg_GQMfYy7STmrwy7DtaaXw&s" alt="">
+                    <img class="mx-2" width="70px"
+                         src="https://aimg.kwcdn.com/upload_aimg/temu/936bf9dc-9bb2-4935-9c5a-a70b800d4cf1.png.slim.png?imageView2/2/w/117/q/70/format/webp"
+                         alt="">
+                    <img class="mx-2" width="70px"
+                         src="https://aimg.kwcdn.com/upload_aimg/temu/219cc18d-0462-47ae-bf84-128d38206065.png.slim.png?imageView2/2/w/117/q/70/format/webp"
+                         alt="">
+                    <img class="mx-2" width="70px"
+                         src="https://aimg.kwcdn.com/upload_aimg/temu/fb599a1d-6d42-49f2-ba7a-64b16d01b226.png.slim.png?imageView2/2/w/117/q/70/format/webp"
+                         alt="">
+                    <img class="mx-2" width="70px"
+                         src="https://aimg.kwcdn.com/upload_aimg/temu/c3e5eb19-1b60-4c2b-87e1-4528fb390cbf.png.slim.png?imageView2/2/w/117/q/70/format/webp"
+                         alt="">
+                </div>
+
+                <div class="col mb-4 my-3">
+                    <label class="form-label">Card number</label>
+                    <input name="cardNumber" type="text" class="form-control" id="cardNumber" required>
+                    <div class="valid-feedback">Looks good!</div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label class="form-label">Month</label>
+                        <select name="expirationMM" class="form-select" id="expirationMM" required>
+                            <option value="">Select Month</option>
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Day</label>
+                        <select name="expirationDay" class="form-select" id="expirationDay" required>
+                            <option value="">Select Day</option>
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Expiration (YY)</label>
+                        <input name="expirationYY" type="number" class="form-control" id="expirationYY" required>
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Card security code</label>
+                        <input name="cardSecurityCode" type="number" class="form-control" id="cardSecurityCode" required>
+                    </div>
+                </div>
+
+                <div class="fs-3 my-5">
+                    <div class="row border-bottom border-2 my-4">
+                        <div class="col">Subtotal</div>
+                        <div class="col text-end subtotal">$0.00</div>
+                    </div>
+                    <div class="row border-bottom border-2 my-4">
+                        <div class="col">Shipping</div>
+                        <div class="col text-end">FREE</div>
+                    </div>
+                    <div class="row border-bottom border-2 my-4">
+                        <div class="col">Total</div>
+                        <div class="col text-end total">$0.00</div>
+                    </div>
+                </div>
+
+                <div class="col-12 my-4 text-end">
+                    <button class="btn btn-danger p-3 px-5" type="submit" id="placeOrderBtn">
+                        Place order
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+
+<footer class="bg-danger text-white mt-5">
+    <div class="container footer">
+        <div class="row">
+            <div class="col-lg-3">
+                <h4 class="text-dark">Exclusive</h4>
+                <h5>Subscribe</h5>
+                <p>Get 10% off on your first order</p>
+            </div>
+            <div class="col-lg-2">
+                <h4>Support</h4>
+                <p>exclusive@gmail.com</p>
+            </div>
+            <div class="col-lg-2">
+                <h4>Account</h4>
+                <p>My account</p>
+            </div>
+            <div class="col-lg-2">
+                <h4>Quick Links</h4>
+                <p>FAQ</p>
+            </div>
+            <div class="col-lg-3">
+                <h4>Download App</h4>
+                <img src="../images/Qrcode.svg" alt="QR Code" class="img-fluid mb-2 app" />
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

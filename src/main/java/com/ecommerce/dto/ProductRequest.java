@@ -9,6 +9,7 @@ public class ProductRequest {
     private Double price;
     private Integer rating;
     private String imageUrl;
+    private String ownerUsername;
 
     public ProductRequest() {
     }
@@ -67,5 +68,13 @@ public class ProductRequest {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getOwnerUsername() {
+        return ownerUsername;
+    }
+
+    public void setOwnerUsername(String ownerUsername) {
+        this.ownerUsername = ownerUsername;
     }
 }

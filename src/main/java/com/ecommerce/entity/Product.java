@@ -20,6 +20,7 @@ public class Product {
     private Double price;
     private Integer rating;
     private String imageUrl;
+    private String ownerUsername;
 
     public Product() {
     }
@@ -86,5 +87,13 @@ public class Product {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getOwnerUsername() {
+        return ownerUsername;
+    }
+
+    public void setOwnerUsername(String ownerUsername) {
+        this.ownerUsername = ownerUsername;
     }
 }

@@ -18,14 +18,7 @@ public class ProductService {
 
     public Product addProduct(ProductRequest request) {
         Product product = new Product();
-
-        product.setBrand(request.getBrand());
-        product.setModel(request.getModel());
-        product.setCategory(request.getCategory());
-        product.setDescription(request.getDescription());
-        product.setPrice(request.getPrice());
-        product.setImageUrl(request.getImageUrl());
-
+        applyRequest(product, request);
         return productRepository.save(product);
     }
 
@@ -33,7 +26,33 @@ public class ProductService {
         return productRepository.findAll();
     }
 
+    public Product getProductById(Long id) {
+        return productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Product not found"));
+    }
+
+    public List<Product> getProductsByOwner(String username) {
+        return productRepository.findByOwnerUsername(username);
+    }
+
+    public Product updateProduct(Long id, ProductRequest request) {
+        Product product = getProductById(id);
+        applyRequest(product, request);
+        return productRepository.save(product);
+    }
+
     public void deleteProduct(Long id) {
         productRepository.deleteById(id);
+    }
+
+    private void applyRequest(Product product, ProductRequest request) {
+        product.setBrand(request.getBrand());
+        product.setModel(request.getModel());
+        product.setCategory(request.getCategory());
+        product.setDescription(request.getDescription());
+        product.setPrice(request.getPrice());
+        product.setRating(request.getRating());
+        product.setImageUrl(request.getImageUrl());
+        product.setOwnerUsername(request.getOwnerUsername());
     }
 }
